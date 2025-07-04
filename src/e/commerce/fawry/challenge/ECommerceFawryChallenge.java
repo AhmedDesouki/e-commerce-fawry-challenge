@@ -30,7 +30,7 @@ public class ECommerceFawryChallenge {
         cart.add(scratchCard, 1);
         
         // Create customer and checkout
-        Customer customer = new Customer("AHMED", 80);
+        Customer customer = new Customer("AHMED", 5000);
         Checkout checkoutService = new Checkout();
         checkoutService.checkout(customer, cart);
     }

@@ -1,6 +1,7 @@
 package e.commerce.fawry.challenge;
 
 
+import java.io.PrintStream;
 import java.util.List;
 
 /*
@@ -21,7 +22,13 @@ public class Checkout {
             System.out.printf("Cannot checkout empty cart");
             
         }
-        
+        else{
+        if(cart.getSubtotal()>customer.getBalance()){
+            System.out.println("Balance: "+customer.getBalance()+"$");
+             System.out.println("Your balance is insufficient");
+              
+        }
+        else{
         // Process shipment
         List<ShippableProduct> shippableItems = cart.getShippableItems();
         if (!shippableItems.isEmpty()) {
@@ -54,11 +61,13 @@ public class Checkout {
         System.out.println("Subtotal         "+ subtotal);
         System.out.println("Shipping         "+ shippingFee);
         System.out.println("Amount           "+ total);
+        System.out.println("Balance: "+(customer.getBalance() - total)+"$");
         
         // Update inventory
         for (Cart item : cart.getItems()) {
             item.getProduct().updateQuantity(item.getQuantity());
         }
     }
-    
+    }
+        }
 }
